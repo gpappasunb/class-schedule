@@ -183,6 +183,13 @@ install it by running the following command in your terminal:
 quarto install gpappasunb/class-schedule
 ```
 
+To download the extension and a template document, you can create a new
+Quarto document with the following command:
+
+``` bash
+quarto use template gpappasunb/class-schedule
+```
+
 ## How to render the schedule
 
 ``` bash
