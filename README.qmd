@@ -139,20 +139,35 @@ To use the `class-schedule-pdf` format, you need to have the `quarto` command li
 You also need to have the `class-schedule` extension installed. You can install it by running the following command in your terminal:
 
 ```bash
-quarto install class-schedule
+quarto install gpappasunb/class-schedule
 ```
 
+To download the extension and a template document, you can create a new Quarto document with the following command:
+
+```bash
+quarto use template gpappasunb/class-schedule
+```
 
 ## How to render the schedule
+
 
 ```bash
 quarto render --to class-schedule-pdf template.qmd
 ```
+This produces a formatted PDF document with the class schedule. 
 
 If you have the `format` metadata set to `class-schedule-pdf` in the YAML metadata, you can simply run:
 
 ```bash
 quarto render template.qmd
+```
+
+Alternatively, you can render the document in other formats by changing the `--to` option to `class-schedule-html`, `class-schedule-docx`, or `class-schedule-odt`. For example:
+
+* html format:
+
+```bash
+quarto render --to class-schedule-html template.qmd
 ```
 
 ## Some formatting tips
@@ -163,16 +178,22 @@ Standard Quarto markdown syntax applies, so you can use any formatting described
 
 ### Highlights
 
+Sometimes, highlighting text in the schedule or body is useful to draw attention to important information. 
+
+::: {.content-visible when-format="latex"}
+
 To highlight text in the schedule or body, use the `\hl{}` command in LaTeX. For example, to highlight bold text, use `\hl{\textbf{bold highlighted text}}` $\Rightarrow$ `\hl{\textbf{bold highlighted text}}`{=latex}.
 
 To change the highlight background color, use `\sethlcolor{red}` before `\hl{RED highlighted text}`. The first command sets the color for the following highlighted text but is not rendered in the document (e.g., `\sethlcolor{red}\hl{RED highlighted text}`). 
 
+::: 
 
 ::: {.callout-note}
 
-This LaTeX code is designed specifically for PDF documents. For a more versatile method of highlighting text, consider using the [mcanouil/quarto-highlight-text](https://github.com/mcanouil/quarto-highlight-text?tab=readme-ov-file) extension. 
+For versatile method of highlighting text, consider using the [mcanouil/quarto-highlight-text](https://github.com/mcanouil/quarto-highlight-text?tab=readme-ov-file) extension. 
 
 :::
+
 
 
 ## Rendered schedule

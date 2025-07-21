@@ -180,7 +180,7 @@ You also need to have the `class-schedule` extension installed. You can
 install it by running the following command in your terminal:
 
 ``` bash
-quarto install class-schedule
+quarto install gpappasunb/class-schedule
 ```
 
 ## How to render the schedule
@@ -189,11 +189,23 @@ quarto install class-schedule
 quarto render --to class-schedule-pdf template.qmd
 ```
 
+This produces a formatted PDF document with the class schedule.
+
 If you have the `format` metadata set to `class-schedule-pdf` in the
 YAML metadata, you can simply run:
 
 ``` bash
 quarto render template.qmd
+```
+
+Alternatively, you can render the document in other formats by changing
+the `--to` option to `class-schedule-html`, `class-schedule-docx`, or
+`class-schedule-odt`. For example:
+
+- html format:
+
+``` bash
+quarto render --to class-schedule-html template.qmd
 ```
 
 ## Some formatting tips
@@ -209,19 +221,12 @@ be numbered.
 
 ### Highlights
 
-To highlight text in the schedule or body, use the `\hl{}` command in
-LaTeX. For example, to highlight bold text, use
-`\hl{\textbf{bold highlighted text}}` $\Rightarrow$ .
-
-To change the highlight background color, use `\sethlcolor{red}` before
-`\hl{RED highlighted text}`. The first command sets the color for the
-following highlighted text but is not rendered in the document (e.g.,
-`\sethlcolor{red}\hl{RED highlighted text}`).
+Sometimes, highlighting text in the schedule or body is useful to draw
+attention to important information.
 
 > [!NOTE]
 >
-> This LaTeX code is designed specifically for PDF documents. For a more
-> versatile method of highlighting text, consider using the
+> For versatile method of highlighting text, consider using the
 > [mcanouil/quarto-highlight-text](https://github.com/mcanouil/quarto-highlight-text?tab=readme-ov-file)
 > extension.
 
