@@ -1,0 +1,107 @@
+% PARTIAL title
+
+
+
+% \definecolor{accentcolor}{HTML}{6082ff}
+% \colorlet{accentcolor}{HeaderColor}
+
+\newtcolorbox{titlebox}[2][]{
+  colframe=HeaderColor!10,
+  colback=HeaderColor!20!white,
+  coltitle=black,colbacktitle=HeaderColor!30,
+  center title,center upper,center lower,
+  fonttitle=\huge\bfseries,
+  fontupper=\Large,
+  fontlower=\itshape,
+  % skin=beamer,
+  boxrule=2mm,
+  valign=center, 
+  title=#2,#1
+}
+
+\renewcommand*{\maketitle}{
+	\pagestyle{fancy}
+	\fancyhf{} % sets both header and footer to nothing
+  $if(logo-placement)$
+	\fancyhead[$logo-placement$]{ % Header alignment
+  $else$
+	\fancyhead[L]{ % Default placement is Left
+  $endif$
+  $if(logo)$  
+  % The logo vertically centered
+  \raisebox{-0.5\height}{
+    \includegraphics[height=$logo-height$]{$logo$}
+  }
+  $endif$
+	}
+  
+  $if(logo-text)$
+	\fancyhead[R]{ % Default placement is Left
+    \parbox[b][$logo-height$][t]
+      {0.8\textwidth}
+      {\scriptsize \raggedleft $logo-text$}   
+  }
+  $endif$
+
+	%%% Rendering the page number
+	\renewcommand{\footrulewidth}{0.1pt}
+
+	% \vspace*{1pt}
+	\begin{center}
+
+		%%% Rendering the header
+    $if(title)$
+
+		% \begin{titlebox}{\huge\shadowtext{$title$}}
+		\begin{titlebox}{$title$}
+      % This is the row below the main title, generally the class name
+      $if(subtitle)$
+      $subtitle$
+      $endif$
+      % The author
+			\tcblower
+      $if(author)$
+      $for(authors)$$it.name.literal$$sep$ \and $endfor$
+      $endif$
+      % Date
+      $if(date)$
+      \par
+      $date$
+      $endif$
+		\end{titlebox}
+    $endif$
+
+	\end{center}
+
+    % Removing the header rule
+    \renewcommand{\headrulewidth}{0pt}
+    % Footer rule
+    \fancyfoot[R]{\textcolor{blue}{\thepage}}
+    \renewcommand{\footrulewidth}{0.5pt}
+    % \renewcommand{\headrule}{\hbox to\headwidth{%
+    % \color{accentcolor}\leaders\hrule height \headrulewidth\hfill}}
+    \renewcommand{\footrule}{\hbox to\headwidth{%
+    \color{HeaderColor}\leaders\hrule height \footrulewidth\hfill}}
+
+	% \clearpage
+	% \thispagestyle{plain}\addtocounter{page}{-1}
+}
+
+
+
+
+% $if(title)$
+% \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+% $endif$
+% $if(subtitle)$
+% \usepackage{etoolbox}
+% \makeatletter
+% \providecommand{\subtitle}[1]{% add subtitle to \maketitle
+%   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+% }
+% \makeatother
+% \subtitle{$subtitle$}
+% $endif$
+% $-- This supports Quarto's authors normalization
+% \author{$for(authors)$$it.name.literal$$sep$ \and $endfor$}
+% \date{$date$}

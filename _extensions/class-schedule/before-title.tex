@@ -1,0 +1,75 @@
+%%%%
+%%%% Color definitions
+%%%%
+
+%% Header box (title) color
+$if(color)$
+\definecolor{HeaderColor}{HTML}{$color$}
+$else$
+\definecolor{HeaderColor}{HTML}{6082ff}
+$endif$
+
+%%%%
+%%%% Table color definitions
+%%%%
+
+%% Table: odd rows
+$if(color-odd)$
+\definecolor{TableOddColor}{HTML}{$color-odd$}
+$else$ 
+\definecolor{TableOddColor}{HTML}{$color$}
+% \colorlet{TableOddColor}{HeaderColor}
+$endif$
+%% Table: even rows
+$if(color-even)$
+\definecolor{TableEvenColor}{HTML}{$color-even$}
+$else$
+\definecolor{TableEvenColor}{HTML}{FFFFFF}
+$endif$
+%%%%
+%%%% Table stripping colors
+%%%%
+\rowcolors{1}{TableEvenColor}{TableOddColor}
+
+\renewcommand*{\arraystretch}{2}
+
+%%%%
+%%%% Special header formatting
+%%%%
+% Change the section header in KOMA-script to render a filled box with the section number
+$if(color-heading)$
+\definecolor{HeadingColor}{HTML}{$color-heading$}
+$else$
+\definecolor{HeadingColor}{HTML}{$color$}
+$endif$
+
+$if(heading-format)$
+%%@@ heading-format $heading-format$
+$endif$
+
+$if(color-even)$
+%%@@ color-even $color-even$
+$else$
+%%@@ color-even NOT FOUND in metadata
+$endif$
+
+$if(color-odd)$
+%%@@ color-odd: $color-odd$
+$else$
+%%@@ color-odd NOT FOUND in metadata
+$endif$
+
+
+%%%%
+%%%% Some styling of the headings. Set with heading-format
+%%%%
+
+$if(heading-format)$
+\renewcommand*{\sectionformat}{%
+    \usekomafont{section}%
+    % The first color in fboxcolor is the line color, the second is the fill color%
+    \fboxrule=1pt\fcolorbox{HeadingColor}{HeadingColor!30}{\thesection}%
+    % This is the extending line after the box
+    \color{HeadingColor}\rule[.5ex]{10pt}{1pt}\>%
+}
+$endif$
