@@ -1,0 +1,54 @@
+
+% TODO: Add custom LaTeX header directives here
+% \documentclass[12pt]{article}
+
+\RequirePackage[utf8x]{inputenc}
+\RequirePackage[usenames,x11names,dvipsnames,svgnames,table]{xcolor}
+\RequirePackage{tikz}
+% \RequirePackage{titlesec} % dows not work with KOMA
+
+% Fixing formatting problems
+\let\footruleskip\undefined % To avoid problems with memoir
+\let\headwidth\undefined % To avoid problems with memoir
+
+\RequirePackage{fancyhdr}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{etoolbox}
+% \RequirePackage{alltt}
+% \RequirePackage{graphicx}
+\RequirePackage{type1ec}
+\RequirePackage{colortbl}
+\RequirePackage{hyperref}
+\RequirePackage{enumerate}
+\RequirePackage{longtable}
+\RequirePackage{textcomp}
+% \RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tabulary}
+\RequirePackage{ctable}
+\RequirePackage{xtab}
+\RequirePackage{soul}
+
+
+%% Page geometry
+\RequirePackage[paper=a4paper,
+headsep=\dimexpr25mm-\baselineskip,
+headheight=\baselineskip,
+textheight=\textheight,
+includehead,ignorefoot]{geometry}
+
+
+% \tcbuselibrary{skins}
+% \usetikzlibrary{calc}
+% }}} Packages used %
+
+% https://www.guyrutenberg.com/2008/10/12/latex-error-command-textquotedbl-unavailable-in-encoding-he8/
+% \let\textquotedbl="
+
+
+%%%%
+%%%% Changing the display of texttt  
+%%%%
+\let\OldTexttt\texttt
+\renewcommand{\texttt}[1]{\textcolor{Maroon}{\OldTexttt{#1}}}
