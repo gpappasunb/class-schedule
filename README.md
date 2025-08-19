@@ -55,15 +55,15 @@ The title will appear at the top of the document, and will be something
 like “Syllabus”.
 
 subtitle  
-Below the title, and can be used to provide additional information, such
+Below the title, it can be used to provide additional information, such
 as the course name and semester.
 
 author  
 Author name (Optional)
 
 date  
-The date of the document, which can be set to `last-modified` to
-automatically use the last modified date of the file. (Optional)
+The document's date can be set to `last-modified` to
+automatically use the file's last modified date. (Optional)
 
 ### Customization metadata
 
@@ -85,8 +85,8 @@ want to include a logo, you should specify its height in points (e.g.,
 `40pt`).
 
 logo-text  
-The text to be displayed at the rightmost side of the page header
-(optional), containing information such as the university name and
+The text will be displayed on the rightmost side of the page header
+(optional) and contain information such as the university name and
 department. One important thing to note is that the text can be
 multi-line; in this case, you should use the `|` character to indicate
 that the text is multi-line, and each line should be indented according
@@ -94,7 +94,7 @@ to YAML syntax. Also, to display two lines, you **must** use a blank and
 indented line between the two lines of text.
 
 color  
-The color of the header in the document, headings and alternating table
+The color of the header in the document, headings, and alternating table
 rows. It is an RGB color code in the form AA39CC, without the `#`
 symbol.
 
@@ -156,19 +156,19 @@ Description of class 2.
 The `schedule` div accepts several attributes:
 
 - `start`: The start date of the schedule in the format `dd/mm/yyyy`.
-  **Important**: The order is revelant, so the first two digits refer to
+  **Important**: The order is relevant; the first two digits refer to
   the day.
 - `end`: The end date of the schedule in the format `dd/mm/yyyy`.
 - `days`: A comma-separated list of days of the week (1 for Monday, 2
   for Tuesday, etc.). This describes the days on which the events occur.
 - `headers`: A comma-separated list of headers for the table
-  (e.g. `Class,Day,Section,Description`). These are used to label the
-  columns in the table and should be four in total, and the order is
+  (e.g., `Class,Day,Section,Description`). These are used to label the
+  columns in the table. There should be four in total, and the order is
   fixed.
 - `dateformat`: The format for displaying dates in the table
-  (e.g. `%a - %b, %d %Y` for abbreviated weekday, month, day, and year).
-  This for the final display of the dates in the table, and you can use
-  any valid [strftime format](https://strftime.org/).
+  (e.g., `%a - %b, %d %Y` for abbreviated weekday, month, day, and year).
+  This renders the dates in the table, and you can use
+  any valid option in [strftime format](https://strftime.org/).
 
 ## Installation
 
@@ -177,13 +177,13 @@ command line tool installed. You can install it from [Quarto’s official
 website](https://quarto.org/docs/get-started/).
 
 You also need to have the `class-schedule` extension installed. You can
-install it by running the following command in your terminal:
+Install it by running the following command in your terminal:
 
 ``` bash
-quarto install gpappasunb/class-schedule
+quarto add gpappasunb/class-schedule
 ```
 
-To download the extension and a template document, you can create a new
+You can download the extension and a template document, and you can create a new
 Quarto document with the following command:
 
 ``` bash
@@ -196,10 +196,10 @@ quarto use template gpappasunb/class-schedule
 quarto render --to class-schedule-pdf template.qmd
 ```
 
-This produces a formatted PDF document with the class schedule.
+The command above produces a formatted PDF document with the class schedule.
 
 If you have the `format` metadata set to `class-schedule-pdf` in the
-YAML metadata, you can simply run:
+YAML metadata, you can run:
 
 ``` bash
 quarto render template.qmd
@@ -209,7 +209,7 @@ Alternatively, you can render the document in other formats by changing
 the `--to` option to `class-schedule-html`, `class-schedule-docx`, or
 `class-schedule-odt`. For example:
 
-- html format:
+- HTML format:
 
 ``` bash
 quarto render --to class-schedule-html template.qmd
@@ -219,21 +219,21 @@ quarto render --to class-schedule-html template.qmd
 
 ### Text outside the schedule
 
-Standard Quarto markdown syntax applies, so you can use any formatting
+Standard Quarto markdown syntax applies so that you can use any formatting
 described in [Quarto Markdown
 Basics](https://quarto.org/docs/authoring/markdown-basics.html). Each
 topic should begin with a level 2 header (`##`), which will be numbered
-automatically. You can also use other header levels, but these will not
-be numbered.
+automatically. You can also use other header levels, but these will remain
+unnumbered.
 
 ### Highlights
 
-Sometimes, highlighting text in the schedule or body is useful to draw
+Sometimes, highlighting text in the schedule or body is helpful to draw
 attention to important information.
 
 > [!NOTE]
 >
-> For versatile method of highlighting text, consider using the
+> For a versatile method of highlighting text, consider using the
 > [mcanouil/quarto-highlight-text](https://github.com/mcanouil/quarto-highlight-text?tab=readme-ov-file)
 > extension.
 
