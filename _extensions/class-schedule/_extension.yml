@@ -13,9 +13,9 @@ contributes:
       color-even: EEEEEE    # Even rows in the table
       color-heading: 5555ff #00820F # Background color of the section heading numbers, if formatted
       logo-text: |
-        University
+        University of
 
-        Department
+        Department of
       heading-format: true
       format-resources:
         - logo.png
@@ -36,16 +36,13 @@ contributes:
         - Weight=400
         - Color=5555ff   # Color of the heading text
       monofont: "Monaco"
-      include-in-header: header.tex
+      include-in-header:
+        - file: header.tex
       template-partials:
         - before-title.tex
         - title.tex
-        # - toc.tex
-      # filters:
-        # - schedule.lua
     gfm: default
     markdown: default
     docx: default
     odt: default
     html: default
-
