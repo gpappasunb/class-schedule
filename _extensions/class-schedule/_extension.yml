@@ -36,8 +36,6 @@ contributes:
         - Style=Cursive
         - Weight=400
         - Color=5555ff # Color of the heading text
-      format-resources:
-        - logo.png
       include-in-header:
         - file: header.tex
       template-partials:
