@@ -1,4 +1,5 @@
 # Class Schedule Example
+
 Georgios Pappas Jr
 2025-07-21
 
@@ -26,12 +27,60 @@ descriptions you wish to include.
 > - Creating meeting agendas.
 > - Managing to-do lists by listing tasks and their descriptions.
 
+## Installation
+
+To use the `class-schedule-pdf` format, first ensure that you have installed the `quarto` command-line tool. Download and install it from [Quarto’s official website](https://quarto.org/docs/get-started/).
+
+You also need to have the `class-schedule` extension installed. You can
+Install it by running the following command in your terminal:
+
+```bash
+quarto use template gpappasunb/class-schedule
+```
+
+The command above provides a `template.qmd` file that is useful as a starter. To install only the extension, without the template, use:
+
+```bash
+quarto add gpappasunb/class-schedule
+```
+
+## How to render the schedule
+
+If you installed the extension with the template (`template.qmd`), you can render it using the following commands:
+
+```bash
+quarto render template.qmd --to class-schedule-pdf
+```
+
+The command above produces a formatted PDF document with the class schedule.
+
+If you have the `format` metadata set to `class-schedule-pdf` in the
+YAML metadata, then you can simply run:
+
+```bash
+quarto render template.qmd
+```
+
+Alternatively, you can render the document in other formats by changing
+the `--to` option to `class-schedule-html`, `class-schedule-docx`, or
+`class-schedule-odt`. For example:
+
+- HTML format:
+
+```bash
+quarto render template.qmd --to class-schedule-html
+```
+
+Now you can create your own document following the usage guidelines below. Replace the commands above with your own `.qmd` file, and do not forget that it should be in the same directory as the downloaded extension.
+
+## Usage
+
 To create a class schedule document using the `class-schedule-pdf`
-format, follow a specific structure and syntax in your Quarto document.
+format your Quarto document to follow a specific structure and syntax.
 The guide below explains how to set up your document, including the
 required metadata and the schedule definition syntax.
 
-## Metadata
+### Document metadata
 
 The metadata at the top of your document defines the standard Quarto
 options used to render the document. The `class-schedule-pdf` format is
@@ -44,25 +93,25 @@ Be sure to set the `format` to `class-schedule-pdf` in the YAML metadata
 at the top of your document. This ensures Quarto uses the custom class
 schedule format when rendering the PDF.
 
-``` yaml
+```yaml
 format: class-schedule-pdf
 ```
 
 ### Regular metadata
 
 title  
-The title will appear at the top of the document, and will be something
+: The title will appear at the top of the document, and will be something
 like “Syllabus”.
 
 subtitle  
-Below the title, it can be used to provide additional information, such
+: Below the title, it can be used to provide additional information, such
 as the course name and semester.
 
 author  
-Author name (Optional)
+: Author name (Optional)
 
 date  
-The document's date can be set to `last-modified` to
+: The document's date can be set to `last-modified` to
 automatically use the file's last modified date. (Optional)
 
 ### Customization metadata
@@ -72,20 +121,20 @@ additional metadata. For example, you can set the `logo` to include a
 logo image, and specify its placement and height.
 
 logo  
-The path to the logo image file. This is optional, but if you want to
+: The path to the logo image file. This is optional, but if you want to
 include a logo, you should specify it here.
 
 logo-placement  
-The placement of the logo in the document. It can be set to `L` (left)
+: The placement of the logo in the document. It can be set to `L` (left)
 or `C` (center). The default is `L`.
 
 logo-height  
-The height of the logo in the document. This is optional, but if you
+: The height of the logo in the document. This is optional, but if you
 want to include a logo, you should specify its height in points (e.g.,
 `40pt`).
 
 logo-text  
-The text will be displayed on the rightmost side of the page header
+: The text will be displayed on the rightmost side of the page header
 (optional) and contain information such as the university name and
 department. One important thing to note is that the text can be
 multi-line; in this case, you should use the `|` character to indicate
@@ -94,26 +143,26 @@ to YAML syntax. Also, to display two lines, you **must** use a blank and
 indented line between the two lines of text.
 
 color  
-The color of the header in the document, headings, and alternating table
+: The color of the header in the document, headings, and alternating table
 rows. It is an RGB color code in the form AA39CC, without the `#`
 symbol.
 
 color-odd  
-The color of the odd rows in the schedule table. The default is the same
+: The color of the odd rows in the schedule table. The default is the same
 as `color`.
 
 color-even  
-The color of the even rows in the schedule table. The default is
+: The color of the even rows in the schedule table. The default is
 `ffffff` (white).
 
 color-heading  
-The color of the decoration in the section headings in the document. The
+: The color of the decoration in the section headings in the document. The
 color of the heading text itself is set with the metadata attribute
 `sansfontoptions` (see [quarto PDF document
 fonts](https://quarto.org/docs/output-formats/pdf-basics.html#fonts)).
 
 heading-format  
-A boolean value that indicates whether to use a special format for the
+: A boolean value that indicates whether to use a special format for the
 section headings. If set to `true`, the section headings will be
 rendered with a filled box around the section number. The default is
 `true`.
@@ -125,31 +174,39 @@ rendered with a filled box around the section number. The default is
 > in the file `_extensions/class-schedule/_extension.yml` in the
 > `class-schedule` extension directory.
 
-## Schedule syntax
+## Schedule block syntax
 
-Define the schedule with the `::: {.schedule}` div syntax. Begin each
+Define the schedule with the `::: {.schedule}` [div syntax](https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans). Begin each
 class day or topic with a `#` header (e.g., `# Introduction`), followed
 by a class description in standard markdown. Use sub-headers (e.g.,
-`## Theory`) to organize sections within a class description. Class
+`## Theory {.unnumbered}`) to organize sections within a class description. Class
 numbers and dates are automatically generated from the `start` and `end`
 attributes in the `schedule` div.
 
-``` mardown
-::: {.schedule 
-start="29/04/2025" 
-end="28/06/2025" 
-days="1,3,5" 
-headers="Class,Day,Section,Description" 
+```mardown
+::: {.schedule
+start="29/04/2025"
+end="28/06/2025"
+days="1,3,5"
+headers="Class,Day,Section,Description"
 dateformat="%a - %b, %d %Y"}
 
-# Class 1 
+# Class 1
 Description of class 1.
 
 # Class 2
 Description of class 2.
 
-::: 
+:::
 ```
+
+> [!NOTE]
+>
+> The topic starts with `#`. Do not forget to add a space after it. `#Intro` is **wrong**, it should be `# Intro`!
+>
+> Do not forget the `.` in `.schedule`.
+>
+> Don't forget the braces for the attributes `{.schedule ...}`. The attributes can be provided in a single or multiple lines, separated by spaces and with values enclosed in quotes
 
 ### Div attributes
 
@@ -169,51 +226,6 @@ The `schedule` div accepts several attributes:
   (e.g., `%a - %b, %d %Y` for abbreviated weekday, month, day, and year).
   This renders the dates in the table, and you can use
   any valid option in [strftime format](https://strftime.org/).
-
-## Installation
-
-To use the `class-schedule-pdf` format, you need to have the `quarto`
-command line tool installed. You can install it from [Quarto’s official
-website](https://quarto.org/docs/get-started/).
-
-You also need to have the `class-schedule` extension installed. You can
-Install it by running the following command in your terminal:
-
-``` bash
-quarto add gpappasunb/class-schedule
-```
-
-You can download the extension and a template document, and you can create a new
-Quarto document with the following command:
-
-``` bash
-quarto use template gpappasunb/class-schedule
-```
-
-## How to render the schedule
-
-``` bash
-quarto render --to class-schedule-pdf template.qmd
-```
-
-The command above produces a formatted PDF document with the class schedule.
-
-If you have the `format` metadata set to `class-schedule-pdf` in the
-YAML metadata, you can run:
-
-``` bash
-quarto render template.qmd
-```
-
-Alternatively, you can render the document in other formats by changing
-the `--to` option to `class-schedule-html`, `class-schedule-docx`, or
-`class-schedule-odt`. For example:
-
-- HTML format:
-
-``` bash
-quarto render --to class-schedule-html template.qmd
-```
 
 ## Some formatting tips
 
