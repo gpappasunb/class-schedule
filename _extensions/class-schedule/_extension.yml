@@ -1,24 +1,24 @@
+---
 title: Class-schedule
 author: Georgios Pappas jr
-version: 1.0.0
+version: 1.0.1
 quarto-required: ">=1.7.0"
 contributes:
   format:
     common:
-      logo: logo.png
+      # logo: logo.png
       logo-placement: C
       logo-height: 26pt
-      color: 5555ff #6082FF         # Main color theme
-      color-odd: cbcdf8 #ccd3f2     # Odd rows in the table
-      color-even: EEEEEE    # Even rows in the table
-      color-heading: 5555ff #00820F # Background color of the section heading numbers, if formatted
+      color: 5555ff # Main color theme
+      color-odd: cbcdf8 # Odd rows in the table
+      color-even: EEEEEE # Even rows in the table
+      color-heading: 5555ff # Background color of the section heading numbers, if formatted
+      urlcolor: YellowGreen
       logo-text: |
-        University of
+        University of XXX
 
-        Department of
+        Department of XXX
       heading-format: true
-      format-resources:
-        - logo.png
       filters:
         - schedule.lua
     pdf:
@@ -30,12 +30,14 @@ contributes:
       block-headings: false
       toc: false
       mainfont: "Georgia"
+      monofont: "Monaco"
       sansfont: "Georgia"
       sansfontoptions:
         - Style=Cursive
         - Weight=400
-        - Color=5555ff   # Color of the heading text
-      monofont: "Monaco"
+        - Color=5555ff # Color of the heading text
+      format-resources:
+        - logo.png
       include-in-header:
         - file: header.tex
       template-partials:
